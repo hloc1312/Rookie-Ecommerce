@@ -40,10 +40,11 @@ namespace eCommerce.Data.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<FeedBack> FeedBacks{ get; set; }
 
 
 
-      
+
 
 
     }

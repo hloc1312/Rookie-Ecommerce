@@ -14,8 +14,7 @@ namespace eCommerce.Data.Configurations
         public void Configure(EntityTypeBuilder<ProductInCategory> builder)
         {
             builder.ToTable("ProductInCategories");
-            builder.HasKey(x => x.ProductId);
-            builder.HasKey(x => x.CategoryId);
+            builder.HasKey(x => new { x.ProductId, x.CategoryId });
             builder.HasOne(x => x.Product).WithMany(x => x.ProductInCategories).HasForeignKey(x => x.ProductId);
             builder.HasOne(x => x.Category).WithMany(x => x.ProductInCategories).HasForeignKey(x => x.CategoryId);
         }
