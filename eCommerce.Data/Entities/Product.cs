@@ -16,7 +16,14 @@ namespace eCommerce.Data.Entities
         public DateTime DateCreate {get;set;}
         public DateTime DateUpdate { get; set; }
         public string SeoAlias {get;set;}
-        //public int FeedbackID {get;set;}
+        
 
+        public List<ProductInCategory> ProductInCategories { get; set; }
+
+        public List<OrderDetail> OrderDetails { get; set; }
+
+        public List<Cart> Carts { get; set; }
+
+        public List<FeedBack> FeedBacks { get; set; }
     }
 }
