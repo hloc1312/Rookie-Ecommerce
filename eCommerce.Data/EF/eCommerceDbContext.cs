@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using eCommerce.Data.Configurations;
+using eCommerce.Data.Extensions;
 
 namespace eCommerce.Data.EF
 {
@@ -19,6 +20,7 @@ namespace eCommerce.Data.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Configuration Fluent
             modelBuilder.ApplyConfiguration(new CartConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ContactConfiguration());
@@ -30,6 +32,9 @@ namespace eCommerce.Data.EF
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
 
             //base.OnModelCreating(modelBuilder);
+
+            // Data Seed
+            modelBuilder.Seed();
         }
 
         public DbSet<Product> Products { get; set; }
