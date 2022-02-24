@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce.Data.EF;
 
 namespace eCommerce.Data.Migrations
 {
     [DbContext(typeof(eCommerceDbContext))]
-    partial class eCommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220224071856_Category_Name")]
+    partial class Category_Name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,30 +86,6 @@ namespace eCommerce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsShowOnHome = true,
-                            Name = "Áo Thun Nam",
-                            SeoAlias = "ao-thun-nam",
-                            SeoDescription = "Áo Thun Thời Trang Dành Cho Nam",
-                            SeoTitle = "Áo Thun Nam",
-                            SortOrder = 1,
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsShowOnHome = true,
-                            Name = "Áo Nữ",
-                            SeoAlias = "ao-nu",
-                            SeoDescription = "Áo Thời Trang Dành Cho Nữ",
-                            SeoTitle = "Áo Nữ",
-                            SortOrder = 2,
-                            Status = 1
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Data.Entities.Contact", b =>
@@ -186,7 +164,7 @@ namespace eCommerce.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 2, 24, 15, 12, 10, 74, DateTimeKind.Local).AddTicks(8754));
+                        .HasDefaultValue(new DateTime(2022, 2, 24, 14, 18, 56, 20, DateTimeKind.Local).AddTicks(6423));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -254,15 +232,6 @@ namespace eCommerce.Data.Migrations
                     b.Property<DateTime>("DateUpdate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Details")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("OriginalPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -277,12 +246,6 @@ namespace eCommerce.Data.Migrations
                     b.Property<string>("SeoAlias")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SeoDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SeoTitle")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ViewCount")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -291,40 +254,6 @@ namespace eCommerce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateCreate = new DateTime(2022, 2, 24, 15, 12, 10, 91, DateTimeKind.Local).AddTicks(4673),
-                            DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Áo thun nam cá sấu",
-                            Details = "Áo thun nam cá sấu",
-                            Name = "Áo Thun Nam Cá Sấu",
-                            OriginalPrice = 100000m,
-                            Price = 200000m,
-                            Quantity = 0,
-                            SeoAlias = "ao-thun-nam",
-                            SeoDescription = "Áo Thun Thời Trang Dành Cho Nam",
-                            SeoTitle = "Áo Thun Nam",
-                            ViewCount = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateCreate = new DateTime(2022, 2, 24, 15, 12, 10, 91, DateTimeKind.Local).AddTicks(9828),
-                            DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Áo nữ",
-                            Details = "Áo nữ",
-                            Name = "Áo Nữ",
-                            OriginalPrice = 50000m,
-                            Price = 150000m,
-                            Quantity = 0,
-                            SeoAlias = "ao-nu",
-                            SeoDescription = "Áo Thời Trang Dành Cho Nữ",
-                            SeoTitle = "Áo Nữ",
-                            ViewCount = 0
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Data.Entities.ProductInCategory", b =>
@@ -340,18 +269,6 @@ namespace eCommerce.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("ProductInCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            CategoryId = 1
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            CategoryId = 2
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Data.Entities.Transaction", b =>

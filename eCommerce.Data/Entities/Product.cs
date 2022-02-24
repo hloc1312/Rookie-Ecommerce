@@ -16,7 +16,14 @@ namespace eCommerce.Data.Entities
         public DateTime DateCreate {get;set;}
         public DateTime DateUpdate { get; set; }
         public string SeoAlias {get;set;}
+        public string Name { set; get; }
+        public string Description { set; get; }
+        public string Details { set; get; }
+        public string SeoDescription { set; get; }
+        public string SeoTitle { set; get; }
+
         
+
 
         public List<ProductInCategory> ProductInCategories { get; set; }
 
