@@ -20,6 +20,7 @@ namespace eCommerce.Data.Configurations
             builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
             builder.Property(x => x.Content).IsRequired();
             builder.HasOne(x => x.Product).WithMany(x => x.FeedBacks).HasForeignKey(x => x.ProductId);
+            builder.HasOne(x => x.User).WithMany(x => x.FeedBacks).HasForeignKey(x => x.UserId);
 
         }
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce.Data.EF;
 
 namespace eCommerce.Data.Migrations
 {
     [DbContext(typeof(eCommerceDbContext))]
-    partial class eCommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220224172718_Add_Identity_Database")]
+    partial class Add_Identity_Database
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,13 +94,6 @@ namespace eCommerce.Data.Migrations
                     b.HasKey("RoleId", "UserId");
 
                     b.ToTable("UserRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -292,7 +287,7 @@ namespace eCommerce.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 2, 25, 0, 44, 47, 881, DateTimeKind.Local).AddTicks(1395));
+                        .HasDefaultValue(new DateTime(2022, 2, 25, 0, 27, 17, 263, DateTimeKind.Local).AddTicks(9372));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -404,7 +399,7 @@ namespace eCommerce.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreate = new DateTime(2022, 2, 25, 0, 44, 47, 910, DateTimeKind.Local).AddTicks(2357),
+                            DateCreate = new DateTime(2022, 2, 25, 0, 27, 17, 286, DateTimeKind.Local).AddTicks(5283),
                             DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Áo thun nam cá sấu",
                             Details = "Áo thun nam cá sấu",
@@ -420,7 +415,7 @@ namespace eCommerce.Data.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreate = new DateTime(2022, 2, 25, 0, 44, 47, 910, DateTimeKind.Local).AddTicks(8016),
+                            DateCreate = new DateTime(2022, 2, 25, 0, 27, 17, 287, DateTimeKind.Local).AddTicks(586),
                             DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Áo nữ",
                             Details = "Áo nữ",
@@ -485,16 +480,6 @@ namespace eCommerce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "4930c2a6-3906-4560-b589-03b6641c81b3",
-                            Description = "Administrator role",
-                            Name = "admin",
-                            NormalizedName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Data.Entities.Transaction", b =>
@@ -602,27 +587,6 @@ namespace eCommerce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
-                            AccessFailedCount = 0,
-                            Birthday = new DateTime(2000, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "1cf6448e-5ad1-4345-9c94-684996e52bb1",
-                            Email = "hloc878@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Nguyen",
-                            LastName = "Loc",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "hloc878@gmail.com",
-                            NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBAuzHzRwKiwj9P3XCWjBFSX3GK/qoDzFWfNiZPa3POoDsy6iS83kElPmfKu69QUoA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "admin"
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Data.Entities.Cart", b =>
