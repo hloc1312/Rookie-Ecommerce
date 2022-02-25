@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using eCommerce.Data.Configurations;
 using eCommerce.Data.Extensions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace eCommerce.Data.EF
 {
-    class eCommerceDbContext : DbContext
+    class eCommerceDbContext : IdentityDbContext<User, Role, Guid>
     {
         // Config Entity Fluent
         public eCommerceDbContext(DbContextOptions options) : base(options)
@@ -30,7 +32,14 @@ namespace eCommerce.Data.EF
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ProductInCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles").HasKey(x => new { x.RoleId, x.UserId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("UserLogins").HasKey(x => x.UserId);
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("UserTokens").HasKey(x => x.UserId);
             //base.OnModelCreating(modelBuilder);
 
             // Data Seed

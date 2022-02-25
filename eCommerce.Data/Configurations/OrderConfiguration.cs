@@ -21,6 +21,7 @@ namespace eCommerce.Data.Configurations
             builder.Property(x => x.ShipAddress).IsRequired().HasMaxLength(200);
             builder.Property(x => x.ShipPhoneNumber).IsRequired().HasMaxLength(50);
             builder.Property(x => x.OrderDate).HasDefaultValue(DateTime.Now);
+            builder.HasOne(x => x.User).WithMany(x => x.Orders).HasForeignKey(x => x.UserId);
 
         }
     }
