@@ -4,3 +4,5 @@
 + Microsoft.EntityFrameworkCore.SqlServer
 + Microsoft.EntityFrameworkCore.Design
 + Microsoft.EntityFrameworkCore.Tool
+-- eCommerce.Application 
++ <PackageReference Include="Microsoft.AspNetCore.App"  /> (Edit project)

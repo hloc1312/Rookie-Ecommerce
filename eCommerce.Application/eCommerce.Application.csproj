@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App"  />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eCommerce.Data\eCommerce.Data.csproj" />
+    <ProjectReference Include="..\eCommerce.Utilities\eCommerce.Utilities.csproj" />
+    <ProjectReference Include="..\eCommerce.ViewModels\eCommerce.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -32,5 +32,7 @@ namespace eCommerce.Data.Entities
         public List<Cart> Carts { get; set; }
 
         public List<FeedBack> FeedBacks { get; set; }
+
+        public List<ProductImage> ProductImages { get; set; }
     }
 }

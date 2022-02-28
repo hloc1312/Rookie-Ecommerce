@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce.Data.EF;
 
 namespace eCommerce.Data.Migrations
 {
     [DbContext(typeof(eCommerceDbContext))]
-    partial class eCommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220228084545_AddProductImageTable")]
+    partial class AddProductImageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -402,7 +404,7 @@ namespace eCommerce.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreate = new DateTime(2022, 2, 28, 23, 27, 7, 952, DateTimeKind.Local).AddTicks(6199),
+                            DateCreate = new DateTime(2022, 2, 28, 15, 45, 44, 648, DateTimeKind.Local).AddTicks(6468),
                             DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Áo thun nam cá sấu",
                             Details = "Áo thun nam cá sấu",
@@ -418,7 +420,7 @@ namespace eCommerce.Data.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreate = new DateTime(2022, 2, 28, 23, 27, 7, 955, DateTimeKind.Local).AddTicks(1960),
+                            DateCreate = new DateTime(2022, 2, 28, 15, 45, 44, 650, DateTimeKind.Local).AddTicks(9842),
                             DateUpdate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Áo nữ",
                             Details = "Áo nữ",
@@ -453,8 +455,8 @@ namespace eCommerce.Data.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<long>("Size")
-                        .HasColumnType("bigint");
+                    b.Property<int>("Size")
+                        .HasColumnType("int");
 
                     b.Property<int>("SortOrder")
                         .HasColumnType("int");
@@ -524,7 +526,7 @@ namespace eCommerce.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "a75ee85c-9f0e-4e29-b047-13f5c167bf39",
+                            ConcurrencyStamp = "ee0bda68-a88c-476b-a980-df27199053e0",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -643,7 +645,7 @@ namespace eCommerce.Data.Migrations
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(2000, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "a5f27f2b-6b67-49b9-80d0-b8f8e1131a50",
+                            ConcurrencyStamp = "c926a2c9-92b3-44cd-8c00-6f45a422973b",
                             Email = "hloc878@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Nguyen",
@@ -651,7 +653,7 @@ namespace eCommerce.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "hloc878@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAyKizdIniughkpH3Ty5inNvMpQ9ez0lAMDk+je/dlYJdG2MSSOpRx68IFFvPK1X7A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGXrEDaPk7bjo7F6Yh5dDLT+gYIvtC0heEUUQcs9Jx0huJfghY8GXwFo3wlItREaFw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

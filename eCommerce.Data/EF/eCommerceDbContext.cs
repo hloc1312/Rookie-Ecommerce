@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace eCommerce.Data.EF
 {
-    class eCommerceDbContext : IdentityDbContext<User, Role, Guid>
+    public class eCommerceDbContext : IdentityDbContext<User, Role, Guid>
     {
         // Config Entity Fluent
         public eCommerceDbContext(DbContextOptions options) : base(options)
@@ -34,6 +34,8 @@ namespace eCommerce.Data.EF
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
+
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles").HasKey(x => new { x.RoleId, x.UserId });
@@ -55,6 +57,7 @@ namespace eCommerce.Data.EF
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<FeedBack> FeedBacks{ get; set; }
+        public DbSet<ProductImage> ProductImages{ get; set; }
 
 
 
