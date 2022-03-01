@@ -1,6 +1,5 @@
 ﻿using eCommerce.Data.EF;
 using eCommerce.ViewModels.Catalog.Products;
-using eCommerce.ViewModels.Catalog.Products.Public;
 using eCommerce.ViewModels.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -18,8 +17,34 @@ namespace eCommerce.Application.Catalog.Products
             _context = context;
         }
 
+        public async Task<List<ProductViewModel>> GetAll()
+        {
+            // Select Join
+            var query = from p in _context.Products
+                        join pic in _context.ProductInCategories on p.Id equals pic.ProductId
+                        join c in _context.Categories on pic.CategoryId equals c.Id
+                        select new { p, pic };
 
-        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryID(GetProductPagingRequest request)
+            var data = await query.Select(x => new ProductViewModel()
+                            {
+                                Id = x.p.Id,
+                                Name = x.p.Name,
+                                DateCreate = x.p.DateCreate,
+                                Description = x.p.Description,
+                                Details = x.p.Details,
+                                OriginalPrice = x.p.OriginalPrice,
+                                Price = x.p.Price,
+                                SeoAlias = x.p.SeoAlias,
+                                SeoDescription = x.p.SeoDescription,
+                                SeoTitle = x.p.SeoTitle,
+                                ViewCount = x.p.ViewCount,
+                                Quantity = x.p.Quantity,
+                                DateUpdate = x.p.DateUpdate
+                            }).ToListAsync();
+            return data;
+        }
+
+        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryID(GetPublicProductPagingRequest request)
         {
             // Select Join
             var query = from p in _context.Products

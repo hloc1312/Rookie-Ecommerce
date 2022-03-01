@@ -1,5 +1,4 @@
 ﻿using eCommerce.ViewModels.Catalog.Products;
-using eCommerce.ViewModels.Catalog.Products.Manage;
 using eCommerce.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace eCommerce.Application.Catalog.Products
 
         Task AddViewCount(int productID);
 
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
         Task<int> AddImages(int productID, List<IFormFile> files);
 

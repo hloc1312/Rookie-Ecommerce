@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerce.ViewModels.Catalog.Products.Manage
+namespace eCommerce.ViewModels.Catalog.Products
 {
-    public class GetProductPagingRequest : PagingRequestBase
+    public class GetManageProductPagingRequest: PagingRequestBase
     {
         public string Keyword { get; set; }
-
         public List<int> CategoryIDs { get; set; }
     }
 }
