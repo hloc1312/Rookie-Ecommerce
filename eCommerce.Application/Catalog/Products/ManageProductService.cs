@@ -3,7 +3,6 @@ using eCommerce.Data.EF;
 using eCommerce.Data.Entities;
 using eCommerce.Utilities;
 using eCommerce.ViewModels.Catalog.Products;
-using eCommerce.ViewModels.Catalog.Products.Manage;
 using eCommerce.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -96,7 +95,7 @@ namespace eCommerce.Application.Catalog.Products
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request)
         {
             // Select Join
             var query = from p in _context.Products

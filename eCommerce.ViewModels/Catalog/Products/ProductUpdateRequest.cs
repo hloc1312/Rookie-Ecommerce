@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eCommerce.ViewModels.Catalog.Products.Manage
+namespace eCommerce.ViewModels.Catalog.Products
 {
     public class ProductUpdateRequest
     {
