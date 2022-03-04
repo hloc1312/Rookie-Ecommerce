@@ -1,10 +1,13 @@
 using eCommerce.Application.Catalog.Products;
 using eCommerce.Application.Common;
+using eCommerce.Application.System.Users;
 using eCommerce.Data.EF;
+using eCommerce.Data.Entities;
 using eCommerce.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,11 +36,17 @@ namespace eCommerce.BackendAPI
             services.AddDbContext<eCommerceDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
+            services.AddIdentity<User, Role>()
+                    .AddEntityFrameworkStores<eCommerceDbContext>()
+                    .AddDefaultTokenProviders();
             // Declare DI
             services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
             services.AddTransient<IManageProductService, ManageProductService>();
-
+            services.AddTransient<UserManager<User>, UserManager<User>>();
+            services.AddTransient<SignInManager<User>, SignInManager<User>>();
+            services.AddTransient<RoleManager<Role>, RoleManager<Role>>();
+            services.AddTransient<IUserService, UserService>();
 
             // Swagger
             services.AddSwaggerGen(c =>
