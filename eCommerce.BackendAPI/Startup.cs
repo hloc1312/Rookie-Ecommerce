@@ -1,4 +1,5 @@
 using eCommerce.Application.Catalog.Products;
+using eCommerce.Application.Common;
 using eCommerce.Data.EF;
 using eCommerce.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -33,7 +34,9 @@ namespace eCommerce.BackendAPI
                     options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
             // Declare DI
+            services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
 
 
             // Swagger
