@@ -1,4 +1,5 @@
-﻿using eCommerce.ViewModels.Catalog.Products;
+﻿using eCommerce.ViewModels.Catalog.ProductImages;
+using eCommerce.ViewModels.Catalog.Products;
 using eCommerce.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace eCommerce.Application.Catalog.Products
 
         Task<int> Delete(int productId);
 
+        Task<ProductViewModel> GetByID(int productID);
+
         Task<bool> UpdatePrice(int productID, decimal newPrice);
 
         Task<bool> UpdateQuantity(int productID, int addQuantity);
@@ -22,12 +25,14 @@ namespace eCommerce.Application.Catalog.Products
 
         Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
-        Task<int> AddImages(int productID, List<IFormFile> files);
+        Task<int> AddImage(int productID, ProductImageCreateRequest request);
 
         Task<int> RemoveImages(int imageID);
 
-        Task<int> UpdateImages(int imageID, string caption, bool isDefault);
+        Task<int> UpdateImages(int imageID, ProductImageUpdateRequest request);
 
-        Task<List<ProductImageViewModel>> GetListImage(int productId);
+        Task<ProductImageViewModel> GetImageByID(int imageID);
+
+        Task<List<ProductImageViewModel>> GetListImages(int productId);
     }
 }

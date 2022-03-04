@@ -10,6 +10,6 @@ namespace eCommerce.Application.Catalog.Products
     {
         Task<PagedResult<ProductViewModel>> GetAllByCategoryID(GetPublicProductPagingRequest request);
 
-        Task<List<ProductViewModel>> GetAll();
+ 
     }
 }
