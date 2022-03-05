@@ -4,6 +4,9 @@ using eCommerce.Application.System.Users;
 using eCommerce.Data.EF;
 using eCommerce.Data.Entities;
 using eCommerce.Utilities.Constants;
+using eCommerce.ViewModels.System.Users;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,8 +48,11 @@ namespace eCommerce.BackendAPI
             services.AddTransient<SignInManager<User>, SignInManager<User>>();
             services.AddTransient<RoleManager<Role>, RoleManager<Role>>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
+            services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
-            services.AddControllers();
+            services.AddControllers()
+                    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
             // Swagger
             services.AddSwaggerGen(c =>
