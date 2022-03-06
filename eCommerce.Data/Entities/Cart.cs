@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eCommerce.Data.Entities
 {
-    public class Cart
+    public class Slide
     {
         public int Id { set; get; }
         public int ProductId { set; get; }

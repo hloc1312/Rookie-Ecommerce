@@ -15,16 +15,18 @@ namespace eCommerce.Data.Extensions
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
-                new Category() {
+                new Category()
+                {
                     Id = 1,
-                    SortOrder = 1, 
-                    IsShowOnHome = true, 
-                    ParentId = null, 
+                    SortOrder = 1,
+                    IsShowOnHome = true,
+                    ParentId = null,
                     Status = Status.Active,
                     Name = "Áo Thun Nam",
                     SeoAlias = "ao-thun-nam",
                     SeoDescription = "Áo Thun Thời Trang Dành Cho Nam",
-                    SeoTitle = "Áo Thun Nam" },
+                    SeoTitle = "Áo Thun Nam"
+                },
                 new Category()
                 {
                     Id = 2,
@@ -39,12 +41,13 @@ namespace eCommerce.Data.Extensions
                 });
 
             modelBuilder.Entity<Product>().HasData(
-                new Product() { 
+                new Product()
+                {
                     Id = 1,
-                    DateCreate = DateTime.Now, 
-                    OriginalPrice = 100000, 
-                    Price = 200000, 
-                    Quantity = 0, 
+                    DateCreate = DateTime.Now,
+                    OriginalPrice = 100000,
+                    Price = 200000,
+                    Quantity = 0,
                     ViewCount = 0,
                     Name = "Áo Thun Nam Cá Sấu",
                     SeoAlias = "ao-thun-nam",
@@ -52,7 +55,6 @@ namespace eCommerce.Data.Extensions
                     SeoTitle = "Áo Thun Nam",
                     Details = "Áo thun nam cá sấu",
                     Description = "Áo thun nam cá sấu"
-
                 },
                 new Product()
                 {
@@ -68,7 +70,6 @@ namespace eCommerce.Data.Extensions
                     SeoTitle = "Áo Nữ",
                     Details = "Áo nữ",
                     Description = "Áo nữ"
-
                 }
             );
 
@@ -76,7 +77,6 @@ namespace eCommerce.Data.Extensions
                 new ProductInCategory() { CategoryId = 1, ProductId = 1 },
                 new ProductInCategory() { CategoryId = 2, ProductId = 2 }
                 );
-
 
             // any guid
             var roleId = new Guid("8D04DCE2-969A-435D-BBA4-DF3F325983DC");
@@ -110,6 +110,65 @@ namespace eCommerce.Data.Extensions
                 RoleId = roleId,
                 UserId = adminId
             });
+
+            modelBuilder.Entity<Slider>().HasData(
+               new Slider()
+               {
+                   Id = 1,
+                   Title = "Save Up to 75% Off",
+                   Name = "Men Collection",
+                   Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.",
+                   SortOrder = 1,
+                   Url = "#",
+                   Image = "~/lib/bootstrap/img/slider/1.jpg",
+                   Status = Status.Active
+               },
+                new Slider()
+                {
+                    Id = 2,
+                    Title = "Save Up to 40% Off",
+                    Name = "Wristwatch Collection",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.",
+                    SortOrder = 2,
+                    Url = "#",
+                    Image = "~/lib/bootstrap/img/slider/2.jpg",
+                    Status = Status.Active
+                },
+                new Slider()
+                {
+                    Id = 3,
+                    Title = "Save Up to 75% Off",
+                    Name = "Jeans Collection",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.",
+                    SortOrder = 3,
+                    Url = "#",
+                    Image = "~/lib/bootstrap/img/slider/3.jpg",
+                    Status = Status.Active
+                },
+                new Slider()
+                {
+                    Id = 4,
+                    Title = "Save Up to 75% Off",
+                    Name = "Exclusive Shoes",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.",
+                    SortOrder = 4,
+                    Url = "#",
+                    Image = "~/lib/bootstrap/img/slider/4.jpg",
+                    Status = Status.Active
+                },
+                new Slider()
+                {
+                    Id = 5,
+                    Title = "Save Up to 50% Off",
+                    Name = "Best Collection",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illum.",
+                    SortOrder = 5,
+                    Url = "#",
+                    Image = "~/lib/bootstrap/img/slider/5.jpg",
+                    Status = Status.Active
+                }
+
+            );
         }
     }
 }

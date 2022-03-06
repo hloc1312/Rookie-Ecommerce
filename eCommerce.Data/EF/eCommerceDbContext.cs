@@ -17,7 +17,6 @@ namespace eCommerce.Data.EF
         // Config Entity Fluent
         public eCommerceDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +34,7 @@ namespace eCommerce.Data.EF
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
-
+            modelBuilder.ApplyConfiguration(new SlideConfiguration());
 
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("UserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles").HasKey(x => new { x.RoleId, x.UserId });
@@ -50,19 +49,13 @@ namespace eCommerce.Data.EF
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Slide> Carts { get; set; }
         public DbSet<ProductInCategory> ProductInCategories { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<FeedBack> FeedBacks{ get; set; }
-        public DbSet<ProductImage> ProductImages{ get; set; }
-
-
-
-
-
-
+        public DbSet<FeedBack> FeedBacks { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
     }
 }

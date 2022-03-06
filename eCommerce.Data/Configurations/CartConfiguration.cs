@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace eCommerce.Data.Configurations
 {
-    public class CartConfiguration : IEntityTypeConfiguration<Cart>
+    public class CartConfiguration : IEntityTypeConfiguration<Slide>
     {
-        public void Configure(EntityTypeBuilder<Cart> builder)
+        public void Configure(EntityTypeBuilder<Slide> builder)
         {
             builder.ToTable("Carts");
             builder.HasKey(x => x.Id);

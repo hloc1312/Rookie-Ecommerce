@@ -13,7 +13,7 @@ namespace eCommerce.Data.Entities
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
 
-        public List<Cart> Carts { get; set; }
+        public List<Slide> Carts { get; set; }
         public List<Order> Orders { get; set; }
         public List<Transaction> Transactions { get; set; }
         public List<FeedBack> FeedBacks { get; set; }
