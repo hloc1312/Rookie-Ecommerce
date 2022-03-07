@@ -25,6 +25,8 @@ namespace eCommerce.Application.Catalog.Products
 
         Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
+        Task<List<ProductViewModel>> GetList();
+
         Task<int> AddImage(int productID, ProductImageCreateRequest request);
 
         Task<int> RemoveImages(int imageID);
@@ -34,5 +36,7 @@ namespace eCommerce.Application.Catalog.Products
         Task<ProductImageViewModel> GetImageByID(int imageID);
 
         Task<List<ProductImageViewModel>> GetListImages(int productId);
+
+        Task<List<ProductViewModel>> GetFeaturedProducts(int take);
     }
 }

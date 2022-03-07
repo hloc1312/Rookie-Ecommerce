@@ -160,6 +160,36 @@ namespace eCommerce.Application.Catalog.Products
             return pageResult;
         }
 
+        public async Task<List<ProductViewModel>> GetList()
+        {
+            var listproduct = from p in _context.Products
+                              join pi in _context.ProductImages on p.Id equals pi.ProductID
+                              select new { p, pi };
+            List<ProductViewModel> listvm = new List<ProductViewModel>();
+            foreach (var product in listproduct)
+            {
+                var productViewModel = new ProductViewModel()
+                {
+                    Id = product.p.Id,
+                    DateCreate = product.p.DateCreate,
+                    Description = product.p.Description,
+                    Details = product.p.Details,
+                    Name = product.p.Name,
+                    OriginalPrice = product.p.OriginalPrice,
+                    Price = product.p.Price,
+                    SeoAlias = product.p.SeoAlias,
+                    SeoDescription = product.p.SeoDescription,
+                    SeoTitle = product.p.SeoTitle,
+                    Quantity = product.p.Quantity,
+                    ViewCount = product.p.ViewCount,
+                    Image = product.pi.ImageUrl,
+                };
+
+                listvm.Add(productViewModel);
+            }
+            return listvm;
+        }
+
         public async Task<ProductViewModel> GetByID(int productID)
         {
             var product = await _context.Products.FindAsync(productID);
@@ -179,6 +209,38 @@ namespace eCommerce.Application.Catalog.Products
                 ViewCount = product.ViewCount,
             };
             return productViewModel;
+        }
+
+        public async Task<List<ProductViewModel>> GetFeaturedProducts(int take)
+        {
+            //1. Select join
+            var query = from p in _context.Products
+                        join pic in _context.ProductInCategories on p.Id equals pic.ProductId into ppic
+                        from pic in ppic.DefaultIfEmpty()
+                        join c in _context.Categories on pic.CategoryId equals c.Id into picc
+                        from c in picc.DefaultIfEmpty()
+                        select new { p, pic };
+
+            var data = await query.OrderByDescending(x => x.p.DateCreate).Take(take)
+                .Select(x => new ProductViewModel()
+                {
+                    Id = x.p.Id,
+                    Name = x.p.Name,
+                    DateCreate = x.p.DateCreate,
+                    Description = x.p.Description,
+                    Details = x.p.Details,
+
+                    OriginalPrice = x.p.OriginalPrice,
+                    Price = x.p.Price,
+                    SeoAlias = x.p.SeoAlias,
+                    SeoDescription = x.p.SeoDescription,
+                    SeoTitle = x.p.SeoTitle,
+                    Quantity = x.p.Quantity,
+                    ViewCount = x.p.ViewCount,
+                    //ThumbnailImage = x.pi.ImagePath
+                }).ToListAsync();
+
+            return data;
         }
 
         public async Task<ProductImageViewModel> GetImageByID(int imageID)

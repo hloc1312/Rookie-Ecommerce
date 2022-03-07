@@ -13,7 +13,6 @@ namespace eCommerce.BackendAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IPublicProductService _publicProductService;
@@ -32,6 +31,26 @@ namespace eCommerce.BackendAPI.Controllers
             var products = await _publicProductService.GetAllByCategoryID(request);
             return Ok(products);
         }
+
+        #region Get Product Feature
+
+        [HttpGet("featured/{take}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetFeaturedProducts(int take)
+        {
+            var products = await _manageProductService.GetFeaturedProducts(take);
+            return Ok(products);
+        }
+
+        #endregion Get Product Feature
+
+        //public async Task<List<ProductViewModel>> GetFeaturedProduct(int take)
+        //{
+        //    var data = await Get<ProductViewModel>($"/api/products/featured/{take}");
+        //    return data;
+        //}
+
+        //private Task<List<ProductViewModel>> GetFeaturedProduct(int take);
 
         #region Get By ID
 
